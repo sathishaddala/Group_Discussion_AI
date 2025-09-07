@@ -1,0 +1,21 @@
+Windows:
+python -m venv venv
+venv\Scripts\activate
+
+Linux/macOS:
+python3 -m venv venv
+source venv/bin/activate
+
+2. Install dependencies:
+pip install -r requirements.txt
+
+3. Set your Gemini API key:
+Edit `app.py` and replace:
+genai.configure(api_key="YOUR_GEMINI_API_KEY")
+with your actual key from https://makersuite.google.com/app/apikey
+
+4. Run the app:
+python app.py
+
+5. Open your browser at:
+http://localhost:5000

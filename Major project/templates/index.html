@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TECHWING GD WITH Ai – Group Discussion Setup</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    function toggleCustomTopic() {
+      const topicSelect = document.getElementById('topicSelect');
+      const customTopic = document.getElementById('customTopic');
+      customTopic.style.display = topicSelect.value === 'Custom' ? 'block' : 'none';
+    }
+  </script>
+</head>
+<body style="background-color: #022c43; background-image: url('/static/background.png'); background-size: cover; background-position: center; margin: 0; padding: 1rem; min-height: 100vh; font-family: Arial, sans-serif; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+  <form action="/start" method="POST" style="text-align: center; display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 90vw;">
+  
+    <!-- Topic Selection -->
+    <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem; width: 100%; max-width: 35rem;">
+      <label for="topicSelect" style="font-size: 2rem; font-weight: bold; color: white; text-shadow: 0.1rem 0.1rem 0.3rem #000;">Select a Topic:</label>
+      <select id="topicSelect" name="topicSelect" onchange="toggleCustomTopic()" required style="font-size: 1.4rem; width: 100%; padding: 0.5rem; border: 0.15rem solid #333; border-radius: 0.5rem; background-color: #fff;">
+        <option value="">--Select Topic--</option>
+        {% for topic in suggested_topics %}
+          <option value="{{ topic }}">{{ topic }}</option>
+        {% endfor %}
+        <option value="Custom">Custom</option>
+      </select>
+    </div>
+    <!-- Custom Topic Input -->
+    <div id="customTopic" style="display: none; margin-bottom: 1.5rem; width: 100%; max-width: 35rem;">
+      <input type="text" id="customTopicInput" name="topic" placeholder="Enter your custom topic" style="width: 100%; font-size: 1.4rem; padding: 0.5rem; border: 0.15rem solid #333; border-radius: 0.5rem;">
+    </div>
+    <!-- Name Entry -->
+    <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem; width: 100%; max-width: 25rem;">
+      <label for="user_name" style="font-size: 2rem; font-weight: bold; color: white; text-shadow: 0.1rem 0.1rem 0.3rem #000;">Enter Your Name:</label>
+      <input type="text" id="user_name" name="user_name" placeholder="Your Name" required style="font-size: 1.4rem; width: 100%; padding: 0.5rem; border: 0.15rem solid #333; border-radius: 0.5rem;">
+    </div>
+    <!-- Empty Space Instead of Add Participants Section -->
+    <div style="height: 4rem; width: 100%; max-width: 30rem;"></div>
+    <!-- Submit -->
+    <button type="submit" style="font-size: 1.6rem; padding: 0.2rem 2rem; background-color: #007BFF; color: white; border: none; border-radius: 13rem; cursor: pointer; transition: background-color 0.3s; margin-top: 0.5rem;">Start GD</button>
+  </form>
+</body>
+</html>
